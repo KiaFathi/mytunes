@@ -12,8 +12,11 @@ var SongQueue = Songs.extend({
       this.remove(model);
     });
 
-    this.on('ended', function (model) {
-      this.remove(model);
+    this.on('ended', function () {
+      this.remove(this.models[0]);
+      if (this.length > 0) {
+        this.playFirst();
+      }
     });
   },
 
