@@ -9,7 +9,17 @@ var SongQueue = Songs.extend({
     });
 
     this.on('dequeue', function (model) {
+      var play = false;
+      if(model === this.models[0]){
+        this.trigger('stop');
+        if(this.length > 1){
+          play = true;
+        }
+      }
       this.remove(model);
+      if(play){
+        this.playFirst();
+      }
     });
 
     this.on('ended', function () {

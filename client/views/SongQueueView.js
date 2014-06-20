@@ -9,7 +9,7 @@ var SongQueueView = Backbone.View.extend({
       this.render();
     }, this);
 
-    this.collection.on('remove', function () {
+    this.collection.on('remove', function (model) {
       this.render();
     }, this);
   },
